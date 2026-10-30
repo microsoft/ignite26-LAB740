@@ -2,7 +2,7 @@
 
 The VitePress site has a landing page followed by a workshop overview, one page per step, and troubleshooting. A left-hand **Exercise 01** menu lists all workshop pages and highlights the current page, using the same native VitePress sidebar layout as SKL233. On smaller screens, open **Menu** to access it. Each workshop page also has native **Next** and **Back** navigation where applicable. Direct links and search remain available; navigation is not locked behind completion checks. The workshop account setup in Exercise00 is not published.
 
-Edit [index.md](index.md) for the landing page's title, description, and button. Its hero image is [public/copilot.png](public/copilot.png). Edit the individual `Exercise01-NN.md` files listed in the [instruction index](../instructions/README.md) for workshop content, never the generated pages. Use two-digit page numbers with no descriptive filename suffix. There is no combined editable copy of the workshop.
+Edit [index.md](index.md) for the landing page's title, description, and button. Its hero image is [public/copilot.png](public/copilot.png). Edit the individual `Exercise01-NN.md` files in [instructions/](../instructions/) for workshop content, never the generated pages. Use two-digit page numbers with no descriptive filename suffix. There is no combined editable copy of the workshop.
 
 The website discovers `Exercise01-NN.md` files directly from the instructions folder and sorts them by their two-digit page numbers. Keep the sequence continuous from `00`, start each file with a level-one heading, retain `Step N:` in numbered page headings, and leave troubleshooting last. The overview keeps the existing `/workshop` URL, numbered steps use `/workshop/step-N`, and troubleshooting uses `/workshop/troubleshooting`. Old single-page step and subsection bookmarks redirect to the corresponding page.
 
@@ -39,7 +39,20 @@ Generated content, cache, and output stay under `.vitepress/` and are ignored by
 
 ## Use the same pages in Skillable
 
-Follow the [Skillable setup instructions](../instructions/README.md#use-in-skillable). Add one external include per numbered page, in filename order, to Skillable's top-level instructions editor after any Exercise00 setup include and separator. The optional [Exercise01.md](../instructions/Exercise01.md) file provides a copy/paste include list; keep it synchronized with the numbered pages if you retain it. Update older Skillable URLs to the renamed exercise files. Keep `===` separators directly in the editor rather than externally including the list itself.
+In Skillable's top-level instructions editor:
+
+1. If using the workshop environment, begin with the setup include and a page separator:
+
+   ```text
+   !INSTRUCTIONS[](https://raw.githubusercontent.com/microsoft/ignite26-LAB740/refs/heads/main/instructions/Exercise00.md)
+
+   ===
+   ```
+
+2. Add one external include per numbered workshop page, in filename order. The optional [Exercise01.md](../instructions/Exercise01.md) file provides a copy/paste include list; keep it synchronized with the numbered pages if you retain it. Replace any previous workshop include or page list with the current exercise URLs.
+3. Keep `===` separators directly in the editor, with one external include per page. Do not externally include the list itself.
+
+For use with your own account, omit the Exercise00 setup include and start with the workshop overview.
 
 The raw URLs target Microsoft's `main` branch, so newly added source files must be published there before Skillable can load them. Confirm page boundaries in Skillable's own preview; the website build cannot verify Skillable's renderer.
 
