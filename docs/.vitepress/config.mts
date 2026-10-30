@@ -1,6 +1,7 @@
 import path from "node:path";
 import { defineConfig } from "vitepress";
-import { getSiteBase, heroFile, homeFile, mediaDirectory, prepareSite, sourceFile } from "../scripts/publish-lab.mjs";
+import { getSiteBase, heroFile, homeFile, isWorkshopSource, mediaDirectory, prepareSite, sourceDirectory } from "../scripts/publish-lab.mjs";
+import workshopNavigation from "./generated/navigation.json";
 
 const themeScript = `(() => {
   const param = new URLSearchParams(window.location.search).get("scoutTheme");
@@ -23,10 +24,11 @@ export default defineConfig({
       { text: "Workshop guide", link: "/workshop" },
       { text: "Microsoft 365 Copilot", link: "https://m365.cloud.microsoft/chat" },
     ],
-    sidebar: false,
+    sidebar: workshopNavigation,
+    docFooter: { prev: "Back", next: "Next" },
     outline: { level: [2, 3], label: "In this workshop" },
     search: { provider: "local" },
-    socialLinks: [{ icon: "github", link: "https://github.com/maquinl/ignite26-LAB740" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/microsoft/ignite26-LAB740" }],
     footer: { message: "Microsoft Ignite 2026 · LAB740" },
   },
   transformHtml(html) {
@@ -41,12 +43,14 @@ export default defineConfig({
       {
         name: "watch-workshop-source",
         configureServer(server) {
-          server.watcher.add([sourceFile, mediaDirectory, homeFile, heroFile]);
+          server.watcher.add([sourceDirectory, homeFile, heroFile]);
         },
-        async handleHotUpdate({ file }) {
+        async hotUpdate({ file }) {
+          if (this.environment.name !== "client") return;
           const changedFile = path.resolve(file);
           if (
-            [sourceFile, homeFile, heroFile].includes(changedFile) ||
+            isWorkshopSource(changedFile) ||
+            [homeFile, heroFile].includes(changedFile) ||
             changedFile.startsWith(path.resolve(mediaDirectory) + path.sep)
           ) {
             await prepareSite();

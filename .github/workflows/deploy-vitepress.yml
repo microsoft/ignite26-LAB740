@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - "docs/**"
-      - "instructions/Lab01.md"
+      - "instructions/Exercise01-*.md"
       - "instructions/media/**"
       - ".github/workflows/deploy-vitepress.yml"
   workflow_dispatch:
