@@ -6,7 +6,7 @@
 
 # [Microsoft Ignite 2026](https://ignite.microsoft.com)
 
-## 🔥LAB740: CXO Workshop Build Your AI Chief of Staff: Your First Digital Employee
+## 🔥LAB740: Build executive focus with a Chief of Staff agent
 ### Session description
 
 Build an AI strategic partner in Microsoft 365 Copilot that reflects your goals, values, and working style. Create a Human Persona from available work context, configure your agent's instructions and knowledge, and use conversation starters to turn strategy into action.
