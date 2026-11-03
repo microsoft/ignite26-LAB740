@@ -2,7 +2,7 @@ Edit your agent
 
 Edit your agent at any time
 
-1. Select **Agents** in the left navigation, then **More agents** to view all available agents.
+1. [ ] Select **Agents** in the left navigation, then **More agents** to view all available agents.
 
    ![More agents tab.](../instructions/media/more_agents.png)
 
