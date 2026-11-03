@@ -1,5 +1,9 @@
 # Step 5: Add knowledge sources
 
+## Skip Skills for this workshop
+
+Skip the **Skills** section for this workshop. Skills provide additional functionality you can explore later; you do not need to configure them to complete the lab.
+
 ## Add your Human Persona
 
 1. [ ] In the **Knowledge** section, select **Add knowledge**.
@@ -30,9 +34,3 @@
     > [!note] **Check:** **Cloud Files**, **Outlook**, and **Teams** are on. **Copilot connectors** and **Web Search** are off.
     >
     > More data is not always better. Begin with the Human Persona and a small set of trusted sources.
-
-## Skip Skills for this workshop
-
-Skip the **Skills** section for this workshop. Skills provide additional functionality you can explore later; you do not need to configure them to complete the lab.
-
-Select **Next** to continue to the Workshop instructions.

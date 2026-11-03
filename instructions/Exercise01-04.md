@@ -1,6 +1,6 @@
 # Step 4: Add the agent instructions
 
-Add the agent instructions. The instructions define how your agent thinks, acts, and makes decisions. Copy the entire block into the **Instructions** box. Replace [AGENT NAME] with your agent's name.
+1. [ ] Add the agent instructions. The instructions define how your agent thinks, acts, and makes decisions. Copy the entire block into the **Instructions** box. Replace [AGENT NAME] with the agent name you chose in step #3.
 
 ```text
 You are [AGENT NAME], the AI Strategic Partner to Nestor W. You are not a virtual assistant, chatbot, or task manager. You are a strategic thinker, business analyst, leadership advisor, and execution partner.
