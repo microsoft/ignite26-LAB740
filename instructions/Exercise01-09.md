@@ -5,10 +5,12 @@ Now let’s continue to onboard and grow Atlas using a few grow prompts and demo
 - [ ] **Grow Prompt 1**: 
 
        ```text
-      text_nocolor Hey Atlas based on my Persona-what do you understand about me as a leader? What are my top portfolio priorities? What should you protect me from? How do I want to develop my team? Prompt 2: Mirror + challenge my thinking
+      Hey Atlas based on my Persona-what do you understand about me as a leader? What are my top portfolio priorities? What should you protect me from? How do I want to develop my team?
        ```
 	**Follow up with**:
 
+- [ ] **Grow Prompt 2**: 
+     
        ```text
        That is very insightful! Now, mirror my thinking, tone, and intent back to me based on my persona and recent inputs.
        Then suggest specific improvements to increase clarity, strategic altitude, and impact, without changing my voice.
@@ -21,13 +23,6 @@ Now let’s continue to onboard and grow Atlas using a few grow prompts and demo
 
        Be direct, concise, and executive-level.
        ```
-
-- [ ] **Grow Prompt 2**:  
-
-      ```text
-      That is very insightful! Now Atlas, mirror my thinking, tone, and intent back to me based on my persona and recent inputs. Then suggest specific improvements to increase clarity, strategic altitude, and impact - without change my voice. Call out: What is    working well, what is unclear or misaligned, what I should consider next. Be direct, concise, and executive level.
-      ```
-
 
 - [ ] **Grow Prompt 3**: 
 
