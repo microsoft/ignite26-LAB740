@@ -8,7 +8,7 @@ Instead of answering the questions from scratch, ask Microsoft 365 Copilot to us
 1. [ ] In Microsoft 365 Copilot Chat, start a new chat while signed in with the default **NestorW** workshop account.
 1. [ ] Copy and run the entire prompt below:
 
-    > [!note] Running this prompt uses **Nestor W's Work context** from the **NestorW** workshop account, **not your own work context**. In the prompt, "I," "me," and "my" refer to Nestor W.
+    > [!note] Running this prompt uses **Nestor W's Work context**, **not your own work context**. In the prompt, "I," "me," and "my" refer to Nestor W.
 
     > [!hint] For long prompts like this one, use the code box's **Copy** button instead of typing the prompt manually. Paste the full prompt into Microsoft 365 Copilot Chat before sending it.
 

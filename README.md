@@ -13,23 +13,25 @@ Build an AI strategic partner in Microsoft 365 Copilot that reflects your goals,
 
 ### 🚀 Getting started
 
+The workshop is split into an overview, **Steps 1-9**, and a troubleshooting page. Each step has its own instruction page.
+
 #### In a guided session
 
 If you're following along during a live session:
 
-1. Complete [Exercise 00: Welcome to your lab environment](instructions/Exercise00.md) to sign in to the virtual machine and choose your workshop account.
-2. Open [Microsoft 365 Copilot](https://m365.cloud.microsoft/chat) using your selected workshop account.
-3. Follow [Exercise 01: Build your strategic partner agent in Microsoft 365 Copilot](instructions/README.md#exercise-01-build-your-strategic-partner-agent).
+1. In the Skillable lab provided for the session, complete [Exercise 00: Welcome to your lab environment](instructions/Exercise00.md) to sign in to the virtual machine and the provided workshop account.
+2. Open [Microsoft 365 Copilot](https://m365.cloud.microsoft/chat) using that workshop account.
+3. In Skillable, read the workshop overview, then select **Next** to work through **Steps 1-9** in order. Use **Back** to return to a previous page.
 
 #### On your own
 
 If you're learning at your own pace:
 
-1. Open [Microsoft 365 Copilot](https://m365.cloud.microsoft/chat).
-2. Sign in with your own Microsoft 365 work account that has access to Copilot and Agent Builder.
-3. Follow [Exercise 01: Build your strategic partner agent in Microsoft 365 Copilot](instructions/README.md#exercise-01-build-your-strategic-partner-agent).
+1. Open the self-paced workshop at [aka.ms/BuildmyCOS](https://aka.ms/BuildmyCOS).
+2. Sign in to [Microsoft 365 Copilot](https://m365.cloud.microsoft/chat) with your own Microsoft 365 work account that has access to Copilot and Agent Builder.
+3. Start with the workshop overview, then use the left-hand **Exercise 01** menu or **Next** and **Back** to work through **Steps 1-9**. On smaller screens, open **Menu** to see the page list.
 
-Website maintainers can find local preview and build instructions in the [website guide](docs/README.md).
+Skip Exercise 00 and the Skillable environment setup. Use Microsoft 365 work account and available work context in place of the workshop samples.
 
 ### 🎯 Learning outcomes
 
