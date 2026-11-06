@@ -1,6 +1,9 @@
 # Step 2: Open Agent Builder
 
 1. [ ] In Microsoft 365 Copilot, select **Agents** from the left navigation.
+
+   ![Microsoft 365 Copilot with Agents highlighted in the left navigation.](../instructions/media/select_agents.png)
+
 1. [ ] Select **Create agent** or **New agent**.
 
    ![Microsoft 365 Copilot with Agents and Create agent highlighted.](../instructions/media/create_agent.jpg)

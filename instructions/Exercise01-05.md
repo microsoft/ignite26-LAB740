@@ -3,17 +3,22 @@
 ## Add your Human Persona
 
 1. [ ] In the **Knowledge** section, select **Add knowledge**.
-1. [ ] In the search box, enter the filename you noted in Step 1.
+
+   ![Agent Builder Knowledge section with Add knowledge highlighted.](../instructions/media/select_add_knowledge.png)
+
+1. [ ] In the search box, enter the filename you noted in Step 1. It should look something like: `NestorW_Wilke_Leadership_and_Impact.docx`.
 1. [ ] Select your Human Persona Word document from the search results to add it as knowledge.
 1. [ ] Wait until the file name appears in the knowledge list.
 
-   ![Agent Builder Knowledge area with Add knowledge and a filename search highlighted, showing a matching Human Persona document.](../instructions/media/add_knowledge.jpg)
+   ![Knowledge search results with the Human Persona Word document highlighted.](../instructions/media/select_human_persona.png)
 
     > [!hint] If you saved the Word document locally, you can upload it instead of searching. Use the attachment (paperclip) icon to upload the file from your device.
     >
-    >**If you get stuck:** If your document does not appear in search, check the filename and confirm that you are signed in with the account you used to create it. If an upload fails, save a clean copy without a sensitivity label and try that copy.
+    >**If you get stuck:** If your document does not appear in search, check the filename. If an upload fails, save a clean copy without a sensitivity label and try that copy.
 
-    > [!note] **Check:** Your Human Persona document appears as a source under the filename you noted in Step 1.
+1. [ ] **Check:** Your Human Persona document appears as a source under the filename you noted in Step 1.
+
+   ![Agent Builder showing the Human Persona document listed under OneDrive.](../instructions/media/cloud_files_persona.png)
 
 ## Choose what your agent can read
 
