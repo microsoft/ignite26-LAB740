@@ -63,7 +63,7 @@ Instead of answering the questions from scratch, ask Microsoft 365 Copilot to us
       ```
 
 1. [ ] Copilot automatically creates the Word document. Open it and review all ten answers. Check that the name and role describe **Nestor W**, the person represented by the **NestorW** workshop account, rather than you. You are not expected to verify Nestor W's team, work history, or source files.
-1. [ ] Keep the automatically generated filename or, if you prefer, open the document in Word and rename it to something more identifiable, such as `NestorW-Human-Persona.docx`. Make a note of the filename so you can find the document when you add it as knowledge in Step 5.
+1. [ ] Keep the automatically generated filename. It should be named something similar to: `NestorW_Wilke_Leadership_and_Impact.docx`. Make a note of the filename so you can find the document when you add it as knowledge in Step 5.
 
     > [!note] **Check:** Your Human Persona document contains all ten questions with an answer or an explicit evidence gap under each one, and you have noted its filename for Step 5.
 

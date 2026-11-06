@@ -8,9 +8,8 @@ At the end of the workshop, we will share a link to these instructions so you ca
 
 ## Step 1: Sign in to the virtual machine
 
-1. [ ] Start by signing in to the virtual machine using the credentials below:
+1. [ ] Start by signing in to the virtual machine using the password below:
 
-   - **Username:** +++@lab.VirtualMachine(Win11-Pro-Base).Username+++
    - **Password:** +++@lab.VirtualMachine(Win11-Pro-Base).Password+++
 
 > [!NOTE]
