@@ -9,11 +9,9 @@
 ## 🔥LAB740: Build executive focus with a Chief of Staff agent
 ### Session description
 
-Build an AI strategic partner in Microsoft 365 Copilot that reflects your goals, values, and working style. Create a Human Persona from available work context, configure your agent's instructions and knowledge, and use conversation starters to turn strategy into action.
+Build an AI strategic partner in Microsoft Copilot using Agent Builder that reflects your goals, values, and working style. Create a Human Persona from available work context, configure your agent's instructions and knowledge, and use conversation starters to turn strategy into action.
 
 ### 🚀 Getting started
-
-The workshop is split into an overview, **Steps 1-9**, and a troubleshooting page. Each step has its own instruction page.
 
 #### In a guided session
 
@@ -43,9 +41,9 @@ By the end of this session, you will be able to:
 
 ### 💻 Technologies used
 
-- Microsoft 365 Copilot
-- Agent Builder
-- Work IQ
+- [Microsoft Copilot](https://learn.microsoft.com/en-us/copilot/plan/copilot-overview)
+- [Agent Builder](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder)
+- [Work IQ](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/)
 
 ### 📚 Continue your learning
 
