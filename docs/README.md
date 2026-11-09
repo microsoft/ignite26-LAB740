@@ -1,10 +1,10 @@
 # Workshop website
 
-The VitePress site has a landing page followed by a workshop overview, one page per step, and troubleshooting. A left-hand **Exercise 01** menu lists all workshop pages and highlights the current page, using the same native VitePress sidebar layout as SKL233. On smaller screens, open **Menu** to access it. Each workshop page also has native **Next** and **Back** navigation where applicable. Direct links and search remain available; navigation is not locked behind completion checks. The workshop account setup in Exercise00 is not published.
+The VitePress site has a landing page followed by a workshop overview, one page per step, and an optional final troubleshooting page. A left-hand **Exercise 01** menu lists all workshop pages and highlights the current page, using the same native VitePress sidebar layout as SKL233. On smaller screens, open **Menu** to access it. Each workshop page also has native **Next** and **Back** navigation where applicable. Direct links and search remain available; navigation is not locked behind completion checks. The workshop account setup in Exercise00 is not published.
 
 Edit [index.md](index.md) for the landing page's title, description, and button. Its hero image is [public/copilot.png](public/copilot.png). Edit the individual `Exercise01-NN.md` files in [instructions/](../instructions/) for workshop content, never the generated pages. Use two-digit page numbers with no descriptive filename suffix. There is no combined editable copy of the workshop.
 
-The website discovers `Exercise01-NN.md` files directly from the instructions folder and sorts them by their two-digit page numbers. Keep the sequence continuous from `00`, start each file with a level-one heading, retain `Step N:` in numbered page headings, and leave troubleshooting last. The overview keeps the existing `/workshop` URL, numbered steps use `/workshop/step-N`, and troubleshooting uses `/workshop/troubleshooting`. Old single-page step and subsection bookmarks redirect to the corresponding page.
+The website discovers `Exercise01-NN.md` files directly from the instructions folder and sorts them by their two-digit page numbers. Keep the sequence continuous from `00`, start each file with a level-one heading, and retain `Step N:` in numbered page headings. The last page can be a numbered step or an optional `# Troubleshooting` page. The overview keeps the existing `/workshop` URL, numbered steps use `/workshop/step-N`, and troubleshooting, if included, uses `/workshop/troubleshooting`. Old single-page step and subsection bookmarks redirect to the corresponding page.
 
 [Exercise01.md](../instructions/Exercise01.md) is an optional Skillable include list. VitePress does not read or watch it, and it can be removed without affecting the website. Builds read the numbered pages locally and never fetch instructions from GitHub.
 
@@ -33,7 +33,7 @@ The build copies the landing page and Copilot hero image, publishes every worksh
 
 Write Skillable callouts as `> [!note] Note text` or `> [!hint] Hint text`, using lowercase markers and keeping the body on the same line. Use notes for context and checks, and hints for tips and help. Inside the lab's numbered tasks, indent these lines four spaces. Continue additional paragraphs in the same callout with a quoted blank line and the same indentation. Keep section-wide guidance unindented so it does not become part of the preceding task. Website publishing converts these to VitePress note and tip blocks.
 
-Suggested prompts use a two-column **Title** / **Prompt** table with `+++title+++` (type into the VM) and `++prompt++` (copy to clipboard) in Skillable. Website publishing turns each row into a heading and a full-width text code block with a Copy button. Escape literal pipes inside table cells as `\|`.
+Suggested prompts use a two-column **Title** / **Prompt** table with `++title++` and `++prompt++` (copy to clipboard) in Skillable. Website publishing also supports `+++title+++` for typing the title into the VM. Each row becomes a heading and a full-width text code block with a Copy button. Escape literal pipes inside table cells as `\|`.
 
 Generated content, cache, and output stay under `.vitepress/` and are ignored by Git.
 

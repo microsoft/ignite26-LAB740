@@ -75,11 +75,27 @@ test("rejects missing introduction, numbering gaps, and too few workshop pages",
   }
 });
 
-test("requires page headings to match the discovered steps and final troubleshooting page", async (t) => {
+test("allows a numbered final step without a troubleshooting page", async (t) => {
+  const directory = await workshopFixture(t, {
+    ...fixturePages,
+    "Exercise01-02.md": "# Step 2: Edit your agent\n",
+  });
+  const pages = await readWorkshop(directory);
+  assert.deepEqual(pages.map((page) => page.route), [
+    "/workshop", "/workshop/step-1", "/workshop/step-2",
+  ]);
+  assert.equal(pages.at(-1).title, "Step 2: Edit your agent");
+  assert.equal(pages.at(-1).outputFile, "workshop/step-2.md");
+});
+
+test("requires matching numbered headings and allows troubleshooting only at the end", async (t) => {
   for (const [filename, source] of [
     ["Exercise01-00.md", "Missing a page heading.\n"],
     ["Exercise01-01.md", "# Step 2: Wrong number\n"],
-    ["Exercise01-02.md", "# Step 2: Not troubleshooting\n"],
+    ["Exercise01-01.md", "# Troubleshooting\n"],
+    ["Exercise01-02.md", "Edit your agent\n"],
+    ["Exercise01-02.md", "# Edit your agent\n"],
+    ["Exercise01-02.md", "# Step 3: Wrong number\n"],
   ]) {
     const directory = await workshopFixture(t, { ...fixturePages, [filename]: source });
     await assert.rejects(readWorkshop(directory), /must start with|must match/);
@@ -92,8 +108,12 @@ test("loads every canonical page in order without fetching external instructions
     .filter((filename) => /^Exercise01-\d{2}\.md$/.test(filename)).sort();
   assert.deepEqual(pages.map((page) => page.filename), filenames);
   assert.equal(pages[0].route, "/workshop");
-  assert.equal(pages.at(-1).route, "/workshop/troubleshooting");
-  for (const [index, page] of pages.slice(1, -1).entries()) {
+  for (const [index, page] of pages.slice(1).entries()) {
+    if (page.title === "Troubleshooting") {
+      assert.equal(index, pages.length - 2);
+      assert.equal(page.route, "/workshop/troubleshooting");
+      continue;
+    }
     assert.match(page.source, new RegExp(`^# Step ${index + 1}: `));
     assert.equal(page.route, `/workshop/step-${index + 1}`);
   }
@@ -133,7 +153,7 @@ test("preserves old step, subsection, and suggested-prompt bookmarks", async () 
   assert.equal(links["#step-6-add-suggested-prompts"], "/workshop/step-6#step-6-add-suggested-prompts");
   assert.equal(links["#choose-what-your-agent-can-read"], "/workshop/step-5#choose-what-your-agent-can-read");
   assert.equal(links["#the-morning-briefing"], "/workshop/step-6#the-morning-briefing");
-  assert.equal(links["#troubleshooting"], "/workshop/troubleshooting#troubleshooting");
+  assert.equal(links["#step-10-edit-your-agent"], "/workshop/step-10#step-10-edit-your-agent");
 });
 
 test("supports project paths and root hosting, including an empty deployment base path", () => {
@@ -344,18 +364,20 @@ test("publishes Skillable suggested prompt rows as headings and full-width code 
       codeFence: "````",
     },
   ];
-  for (const newline of ["\n", "\r\n"]) {
-    const table = [
-      "| Title | Prompt |",
-      "| --- | --- |",
-      ...entries.map(({ title, prompt }) =>
-        `| +++${title.replace(/\|/g, "\\|")}+++ | ++${prompt.replace(/\|/g, "\\|")}++ |`,
-      ),
-    ].join(newline);
-    const expected = entries.map(({ title, prompt, codeFence = "```" }) =>
-      [`## ${title}`, "", `${codeFence}text`, prompt, codeFence].join(newline),
-    ).join(newline + newline);
-    assert.equal(publishMarkdown(table).markdown, expected);
+  for (const titleMarker of ["++", "+++"]) {
+    for (const newline of ["\n", "\r\n"]) {
+      const table = [
+        "| Title | Prompt |",
+        "| --- | --- |",
+        ...entries.map(({ title, prompt }) =>
+          `| ${titleMarker}${title.replace(/\|/g, "\\|")}${titleMarker} | ++${prompt.replace(/\|/g, "\\|")}++ |`,
+        ),
+      ].join(newline);
+      const expected = entries.map(({ title, prompt, codeFence = "```" }) =>
+        [`## ${title}`, "", `${codeFence}text`, prompt, codeFence].join(newline),
+      ).join(newline + newline);
+      assert.equal(publishMarkdown(table).markdown, expected);
+    }
   }
 });
 
@@ -386,6 +408,8 @@ test("rejects malformed or empty cells in Skillable suggested prompt tables", ()
     "| +++Example+++ | Missing copy markers. |",
     "| +++Example+++ | ++Unescaped | pipe.++ |",
     "| +++ +++ | ++Copy this prompt.++ |",
+    "| ++ ++ | ++Copy this prompt.++ |",
+    "| +++Example++ | ++Copy this prompt.++ |",
     "| +++Example+++ | ++ ++ |",
   ]) {
     const source = ["| Title | Prompt |", "| --- | --- |", row].join("\n");
@@ -469,11 +493,11 @@ test("preserves every prompt and workshop step across the canonical pages", asyn
   const newline = source.includes("\r\n") ? "\r\n" : "\n";
   const expectedPrompts = [...source.matchAll(/^[ \t]*```text\r?\n[\s\S]*?^[ \t]*```/gm)]
     .map((match) => ({ index: match.index, block: match[0] }));
-  const promptRows = [...source.matchAll(/^\| \+\+\+(.+?)\+\+\+ \| \+\+(.+?)\+\+ \|[ \t]*$/gm)];
+  const promptRows = [...source.matchAll(/^\| (\+{2,3})(?!\+)(.+?)\1 \| \+\+(.+?)\+\+ \|[ \t]*$/gm)];
   assert.equal(promptRows.length, 3);
   for (const row of promptRows) {
-    const title = row[1].replace(/\\\|/g, "|");
-    const prompt = row[2].replace(/\\\|/g, "|");
+    const title = row[2].replace(/\\\|/g, "|");
+    const prompt = row[3].replace(/\\\|/g, "|");
     expectedPrompts.push({
       index: row.index,
       block: ["```text", prompt, "```"].join(newline),
