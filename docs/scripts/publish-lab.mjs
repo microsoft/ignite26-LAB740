@@ -19,7 +19,7 @@ export async function readWorkshop(directory = sourceDirectory) {
   const filenames = (await readdir(directory))
     .filter((filename) => /^Exercise01-\d{2}\.md$/.test(filename)).sort();
   if (filenames.length < 3) {
-    throw new Error("Exercise01 must include an introduction, at least one step, and troubleshooting.");
+    throw new Error("Exercise01 must include an introduction and at least two workshop pages.");
   }
   for (const [index, filename] of filenames.entries()) {
     const expected = `Exercise01-${String(index).padStart(2, "0")}.md`;
@@ -33,15 +33,14 @@ export async function readWorkshop(directory = sourceDirectory) {
     if (!heading) {
       throw new Error(`${filename} must start with a level-one page heading.`);
     }
-    const lastPage = index === filenames.length - 1;
+    const troubleshootingPage = index === filenames.length - 1 && heading[1] === "Troubleshooting";
     if (
-      (lastPage && heading[1] !== "Troubleshooting") ||
-      (index > 0 && !lastPage && !heading[1].startsWith(`Step ${index}: `))
+      index > 0 && !troubleshootingPage && !heading[1].startsWith(`Step ${index}: `)
     ) {
       throw new Error(`${filename} must match its numbered step or final Troubleshooting page.`);
     }
     const route = index === 0 ? "/workshop"
-      : lastPage ? "/workshop/troubleshooting" : `/workshop/step-${index}`;
+      : troubleshootingPage ? "/workshop/troubleshooting" : `/workshop/step-${index}`;
     return {
       filename,
       source,
@@ -74,21 +73,21 @@ function publishPromptTable(table, newline) {
     !/^\|[ \t]*Title[ \t]*\|[ \t]*Prompt[ \t]*\|[ \t]*$/i.test(header) ||
     !separator ||
     !/^\|[ \t]*:?-{3,}:?[ \t]*\|[ \t]*:?-{3,}:?[ \t]*\|[ \t]*$/.test(separator) ||
-    !rows.some((row) => /^\|[ \t]*\+\+\+/.test(row))
+    !rows.some((row) => /^\|[ \t]*\+\+/.test(row))
   ) {
     return table;
   }
   return rows.map((row, index) => {
     const cells = row.match(
-      /^\|[ \t]*\+\+\+((?:\\\||[^|])+?)\+\+\+[ \t]*\|[ \t]*\+\+((?:\\\||[^|])+?)\+\+[ \t]*\|[ \t]*$/,
+      /^\|[ \t]*(\+{2,3})(?!\+)((?:\\\||[^|])+?)\1[ \t]*\|[ \t]*\+\+((?:\\\||[^|])+?)\+\+[ \t]*\|[ \t]*$/,
     );
-    if (!cells || !cells[1].trim() || !cells[2].trim()) {
+    if (!cells || !cells[2].trim() || !cells[3].trim()) {
       throw new Error(
-        `Suggested prompt table row ${index + 1} must have a +++title+++ and ++prompt++.`,
+        `Suggested prompt table row ${index + 1} must have a ++title++ or +++title+++ and ++prompt++.`,
       );
     }
-    const title = cells[1].replace(/\\\|/g, "|");
-    const prompt = cells[2].replace(/\\\|/g, "|");
+    const title = cells[2].replace(/\\\|/g, "|");
+    const prompt = cells[3].replace(/\\\|/g, "|");
     const codeFence = "`".repeat(
       Math.max(3, ...[...prompt.matchAll(/`+/g)].map(([run]) => run.length + 1)),
     );

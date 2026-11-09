@@ -13,7 +13,7 @@ Build an AI strategic partner in Microsoft 365 Copilot that reflects your goals,
 
 ### 🚀 Getting started
 
-The workshop is split into an overview, **Steps 1-9**, and a troubleshooting page. Each step has its own instruction page.
+The workshop is split into an overview and **Steps 1-10**. Each step has its own instruction page.
 
 #### In a guided session
 
