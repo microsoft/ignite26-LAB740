@@ -1,4 +1,4 @@
-# Build your strategic partner agent in Microsoft 365 Copilot
+# Build your Copilot Chief of Staff: Turn AI into ROI
 
 In this workshop, you will build a strategic partner agent that helps protect your time, amplify your voice, sharpen priorities, challenge assumptions, and turn strategy into clear action. You will ground the agent in your Human Persona and configure it to reflect your values and working style.
 
